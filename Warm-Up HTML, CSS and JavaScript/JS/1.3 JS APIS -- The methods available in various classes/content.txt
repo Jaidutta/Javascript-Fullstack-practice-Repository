@@ -1,0 +1,8 @@
+Programmes in sequence
+1. main.js
+2. class1.js
+3. class2.js
+4. date.js
+5. json
+6. random.js
+7. Math.js
