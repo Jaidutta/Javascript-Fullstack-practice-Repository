@@ -1,0 +1,11 @@
+Content
+1. index.js 
+2. file-reading 
+     a.txt
+     file-read.js 
+3. functional argument 
+
+4. synchronous-file-read.js
+5. asynchronous-file-read.js
+6. setTimeout.js 
+7. setInterval.js
