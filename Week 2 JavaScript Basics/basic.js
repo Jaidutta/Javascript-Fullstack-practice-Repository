@@ -162,8 +162,34 @@ const users1 = [
   }
 ];
 
-log(users1[0].name);
-log(users1[1].name);
-log(users1[2].name);
+console.log(users1[0].name);
+console.log(users1[1].name);
+console.log(users1[2].name);
 
 console.log(users[0]?.addresses?.[0]["city"]);  // ? should always be used before the dot
+
+
+// Question from the exercise
+
+const users2 = [{
+    name: "harkirat",
+    age: 22
+}, {
+    name: "raman",
+    age: 23
+}, {
+    name: "kirat",
+    age: 12
+}]
+
+
+function isLegalUser(user) {
+  legalUser = [];
+  for(let user of users2) {
+    if(user["age"] >= 18) {
+      legalUser.push(user);
+    }
+  }
+  return legalUser;
+}
+console.log(isLegalUser(users2));
