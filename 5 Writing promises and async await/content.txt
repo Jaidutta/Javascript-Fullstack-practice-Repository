@@ -1,0 +1,9 @@
+Content Sequencee
+1. file-read.js
+2. promisified-functions.js
+3. exercise1.js 
+4. exercise2.js
+5. exercise3.js 
+6. newExercise1.js
+7. newExercise2.js 
+8. newExercise3.js
