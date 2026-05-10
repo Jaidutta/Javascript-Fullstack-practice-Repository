@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const contents = fs.readFileSync("a.txt", "utf-8")
+const contents = fs.readFileSync("a.txt", "utf-8") // blocking code, will wait until the file is read and then assign the contents to the variable. It will stop the execution of the program until the file is read and the contents are assigned to the variable.
 console.log(contents)
 
 for (let i = 0; i < 100; i++) {
@@ -52,7 +52,7 @@ setTimeoutPromisified(5 * 1000).then(callback);
    }
   }
 
-  // The above code is a very simplified version of the Promise class how a    Promise might be implemented in JavaScript. 
+  // The above code is a very simplified version of how a Promise class might be implemented in JavaScript. 
 */
 
 // Non-Promisified version of setTimeout 

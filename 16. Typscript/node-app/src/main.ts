@@ -25,3 +25,10 @@ could not find a declaration file for module 'express'. 'c:/Users/My Account/Dow
   Whenever we see this kind of error, we MUST install that library with 
   bun add @types/express -D
 */
+
+
+
+// const {UserModel} = require("./models")   // method 1 to import
+// import { UserModel } from "./models"; // method 2 to import
+
+// import UserModel from "./models"; // method 3 to import when export default is used  --> without { }
