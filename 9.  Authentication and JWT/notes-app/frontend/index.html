@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+
+    </script>
+</head>
+
+<body>
+    <div style="display: flex; gap: 10px; justify-content: space-between;">
+        <div id="notes">
+            Loading...
+        </div>
+        <div>
+            <input type="text" placeholder="Enter note..." id="userNote" />
+            <button onclick="addTodo()">Create new note</button>
+        </div>
+    </div>
+    <script>
+        async function addTodo() {
+            if(document.getElementById("userNote").value === "") {
+                alert("Please enter a note");
+                return;
+            }
+            // Save to the Database
+            await axios.post("http://localhost:3000/notes", {
+                note: document.getElementById("userNote").value
+            }, {
+                headers: { 
+                    token: localStorage.getItem("token") // Sending the token in the request header for authentication
+                }
+            });
+
+            // show the todo grabbed from the input element in the frontend
+            const newDiv = document.createElement("div");
+
+            newDiv.innerHTML = document.getElementById("userNote").value;
+            newDiv.setAttribute('style', 'border: 1px solid black; padding: 10px; margin: 10px;');
+            document.getElementById("notes").appendChild(newDiv);
+
+            // make the input box empty again
+            document.getElementById("userNote").value = "";
+        }
+        async function getNotes() {
+            /*
+            const response = await fetch('http://localhost:3000/notes');
+            const json = await response.json();
+            console.log(json.notes);
+            */
+            // This is how axios is used for making HTTP requests
+
+            const response = await axios.get('http://localhost:3000/notes', {
+                headers: { 
+                    token: localStorage.getItem("token") // Sending the token in the request header for authentication
+                }
+            });
+
+            const notes = response.data.notes;
+            document.getElementById('notes').innerHTML = "";
+            for (let note of notes) {
+                const noteDiv = document.createElement('div');
+                noteDiv.innerHTML = note;
+                noteDiv.setAttribute('style', 'border: 1px solid black; padding: 10px; margin: 10px;');
+                document.getElementById('notes').appendChild(noteDiv);
+            }
+        }
+        getNotes();
+    </script>
+</body>
+
+</html>

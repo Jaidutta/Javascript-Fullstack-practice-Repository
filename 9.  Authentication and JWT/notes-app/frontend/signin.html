@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+  </script>
+
+</head>
+
+<body>
+
+  <body>
+    <input id="username" type="text" placeholder="username" />
+    <input id="password" type="password" placeholder="password" />
+    <button onclick="signIn()">Sign In</button>
+  </body>
+  <script>
+    async function signIn() {
+      // Capturing values from input fields
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Sending POST request to the backend
+      const response = await axios.post("http://localhost:3000/signin", {
+        username,
+        password
+      });
+
+      // Afteer sigining in, receive the token and Store the received token in localStorage after successful sign-in
+      const token = response.data.token; // Assuming the token is sent in the response body as { token: "the_jwt_token" }
+
+      localStorage.setItem("token", token);
+
+      // Redirecting user to home page upon success
+      window.location = '/';
+    }
+  </script>
+</body>
+
+</html>
