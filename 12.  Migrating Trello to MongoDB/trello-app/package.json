@@ -1,9 +1,9 @@
 {
-  "name": "Todo App with MongoDB",
+  "name": "projectPulse",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.24.1"
   }
 }
