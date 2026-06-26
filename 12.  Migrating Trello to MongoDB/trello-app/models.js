@@ -1,16 +1,17 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 
 // connect to mongodb cluster
-mongoose.connect("mongodb+srv://duttajoy_db_user:Hello1World2@mongodbapps.oz2pgyv.mongodb.net/projectPulseDB")
-
+mongoose.connect(process.env.MONGO_URI)
+console.log("Your URI is:", process.env.MONGO_URI);
 // create schemas
-
 const userSchema = mongoose.Schema({
   username: String, 
   password: String
 })
 
-const organzationSchema = mongoose.Schema({
+const organizationSchema = mongoose.Schema({
   title: String,
   description: String,
   admin: mongoose.Types.ObjectId , // userId
@@ -18,7 +19,7 @@ const organzationSchema = mongoose.Schema({
 })
 
 const userModel = mongoose.model("users", userSchema);
-const organizationModel = mongoose.model("organizations", organzationSchema);
+const organizationModel = mongoose.model("organizations", organizationSchema);
 
 module.exports = {
   userModel: userModel,
